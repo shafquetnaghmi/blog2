@@ -1,0 +1,21 @@
+{% extends 'app1/base.html' %}
+{% load static %}
+{% block title %}hello blog {% endblock %}
+{% block content %}
+<form method='GET' action="{% url "app1:search" %}">
+    <input type="search" placeholder="search" name="query" id="query">
+    <button type="submit" >Search</button>
+</form>
+<P>{% with results.count as total_count %} 
+    <P>About {{total_count}} results...</p>
+    {% endwith %}
+</p>
+{% for post in results %}
+
+<ul>
+<a href="{{post.get_absolute_url}}">{{post.title}} </a>
+<P>{{post.body|truncatewords:20}}
+
+</ul>
+{% endfor %}
+{% endblock %}

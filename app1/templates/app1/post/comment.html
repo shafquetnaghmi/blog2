@@ -1,0 +1,14 @@
+{% extends 'app1/base.html' %}
+{% block content %}
+{% if comment %}
+<h2>Your comment has been added.</h2>
+ <p><a href="{{ post.get_absolute_url }}">Back to the post</a></p>
+{% else %}
+
+<form method='POST'>
+    {% csrf_token %}
+    {{form.as_p}}
+    <input type="submit" value="comment">
+</form>
+{% endif %}
+{% endblock %}

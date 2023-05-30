@@ -1,0 +1,29 @@
+{% extends 'app1/base.html' %}
+{% block title %} {{post.title}} {% endblock %}
+
+{% block content %}
+
+<h1>{{post.title}} </h1>
+<p>published {{post.publish}} by {{post.author}}</p>
+<P>{{post.body|linebreaks}}</P>
+<p> 
+    <a href="{% url 'app1:post_share' post.id %}">share this post </a>
+</p>
+<P> 
+    <a href="{% url 'app1:post_comment' post.id %}"> comment </a>
+</p>
+<div>
+    {% with comments.count as total_count %}
+    <P>Total comment is {{total_count}}</P>
+    {% endwith %}
+    {% for comment in comments %}
+    <P>{{comment.body}}</P>
+    {% endfor %}
+</div>
+<div>
+    <P>Suggestions</p>
+    {% for post in similiar_post %}
+    <P><a href="{{post.get_absolute_url}}">{{post.title}} </a><P>
+    {% endfor %}
+    
+{% endblock %}
