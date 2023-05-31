@@ -1,0 +1,39 @@
+*{
+    margin:0;
+    padding:0;
+}
+ul.nav{
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color:#3498db;
+    height:50px;
+    
+  }
+ ul li{
+    color:white;
+    padding:9px;
+ }
+
+.search-form{
+    text-align: center;
+    padding:10px;
+    
+}
+#search-box{
+    height: 30px;
+    width:300px;
+    border-radius: 10px;
+}
+#form-button{
+    height: 30px;
+    width:80px;
+    background-color:#2ecc71;
+    color:white;
+    border-radius: 10px;
+
+}
+.individual-post{
+    margin:10px 40px;
+}
