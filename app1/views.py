@@ -97,9 +97,9 @@ def post_comment(request,post_id):
 def post_search(request):   #making search
     search_query=request.GET['query']
     search_vector=SearchVector('title',weight='A') +SearchVector('body',weight='B')
-    #results=Post.published.annotate(search=SearchVector('title','body')).filter(search=search_query)
+    results=Post.published.annotate(search=SearchVector('title','body')).filter(search=search_query)
     #results=Post.published.annotate(search=search_vector,rank=SearchRank(search_vector,search_query)).filter(search=search_query).order_by('-rank')
-    results=Post.published.annotate(similarity=TrigramSimilarity('title',search_query)).filter(similarity__gt=.1).order_by('-similarity')
+    #results=Post.published.annotate(similarity=TrigramSimilarity('title',search_query)).filter(similarity__gt=.1).order_by('-similarity')
     context={"results":results,"search_query":search_query}
     return render(request,'app1/search.html',context)
 
